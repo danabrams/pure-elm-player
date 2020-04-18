@@ -1,8 +1,9 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, source, video)
-import Html.Attributes exposing (src)
+import Html exposing (Attribute, Html, source, video)
+import Html.Attributes exposing (autoplay, property, src)
+import Json.Encode as Encode
 
 
 
@@ -47,4 +48,9 @@ update _ model =
 
 view : Model -> Html msg
 view _ =
-    video [] [ source [ src "https://archive.org/download/TheGreatTrainRobbery_555/TheGreatTrainRobbery_512kb.mp4" ] [] ]
+    video [ autoplay True, muted True ] [ source [ src "https://archive.org/download/TheGreatTrainRobbery_555/TheGreatTrainRobbery_512kb.mp4" ] [] ]
+
+
+muted : Bool -> Attribute msg
+muted value =
+    property "muted" (Encode.bool value)
