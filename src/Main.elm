@@ -95,7 +95,9 @@ view model =
                     , muted True
                     , playing model.playState
                     , width 300
-                    , onPause MediaPaused
+                    , onError MediaPaused
+                    , onEnded MediaPaused
+                    , onAbort MediaPaused
                     ]
                     [ source [ src "https://archive.org/download/CRISSIESHERIDANAnEdisonFilmFrom1897/CRISSIE%20SHERIDAN-An%20Edison%20Film%20from%201897.mp4" ]
                         []
@@ -127,6 +129,16 @@ playing state =
             playbackRate 0.0
 
 
-onPause : Msg -> Attribute Msg
-onPause tagger =
-    on "pause" (Decode.succeed tagger)
+onError : Msg -> Attribute Msg
+onError tagger =
+    on "error" (Decode.succeed tagger)
+
+
+onEnded : Msg -> Attribute Msg
+onEnded tagger =
+    on "ended" (Decode.succeed tagger)
+
+
+onAbort : Msg -> Attribute Msg
+onAbort tagger =
+    on "abort" (Decode.succeed tagger)
