@@ -47,4 +47,6 @@ update _ model =
 
 view : Model -> Html msg
 view _ =
-    video [] [ source [ src "https://archive.org/download/TheGreatTrainRobbery_555/TheGreatTrainRobbery_512kb.mp4" ] [] ]
+    video []
+        [ source [ src "https://archive.org/download/CRISSIESHERIDANAnEdisonFilmFrom1897/CRISSIE%20SHERIDAN-An%20Edison%20Film%20from%201897.mp4" ] []
+        ]
