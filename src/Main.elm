@@ -1,4 +1,4 @@
-module Main exposing (main, onPaused)
+module Main exposing (main)
 
 import Browser
 import Html exposing (Attribute, Html, button, div, source, text, video)
@@ -95,9 +95,7 @@ view model =
                     , muted True
                     , playing model.playState
                     , width 300
-                    , onError MediaPaused
-                    , onEnded MediaPaused
-                    , onPaused MediaPaused
+                    , onPause MediaPaused
                     ]
                     [ source [ src "https://archive.org/download/CRISSIESHERIDANAnEdisonFilmFrom1897/CRISSIE%20SHERIDAN-An%20Edison%20Film%20from%201897.mp4" ]
                         []
@@ -129,16 +127,6 @@ playing state =
             playbackRate 0.0
 
 
-onError : Msg -> Attribute Msg
-onError tagger =
-    on "error" (Decode.succeed tagger)
-
-
-onEnded : Msg -> Attribute Msg
-onEnded tagger =
-    on "ended" (Decode.succeed tagger)
-
-
-onPaused : Msg -> Attribute Msg
-onPaused tagger =
-    on "paused" (Decode.succeed tagger)
+onPause : Msg -> Attribute Msg
+onPause tagger =
+    on "pause" (Decode.succeed tagger)
