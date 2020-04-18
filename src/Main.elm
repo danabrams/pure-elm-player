@@ -59,3 +59,4 @@ view _ =
 muted : Bool -> Attribute msg
 muted value =
     property "muted" (Encode.bool value)
+
