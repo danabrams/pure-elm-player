@@ -1,7 +1,8 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, div)
+import Html exposing (Html, source, video)
+import Html.Attributes exposing (src)
 
 
 
@@ -46,4 +47,4 @@ update _ model =
 
 view : Model -> Html msg
 view _ =
-    div [] []
+    video [] [ source [ src "https://archive.org/download/TheGreatTrainRobbery_555/TheGreatTrainRobbery_512kb.mp4" ] [] ]
